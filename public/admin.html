@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Fitt Affair — Admin</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="admin-page">
+  <div id="login" class="admin-login">
+    <div class="admin-card">
+      <div class="logo"><span class="logo-mark">FA</span><span><b>Fitt Affair</b><small>Private Admin</small></span></div>
+      <h1>Control Center</h1>
+      <p>Private management panel. Enter your admin key.</p>
+      <input id="adminKey" type="password" placeholder="Admin key">
+      <button class="btn primary full" onclick="login()">Open Dashboard</button>
+      <small>Change the default ADMIN_KEY in server.js before publishing.</small>
+    </div>
+  </div>
+
+  <div id="dashboard" class="dashboard hidden">
+    <header class="admin-top">
+      <div class="logo"><span class="logo-mark">FA</span><span><b>Fitt Affair</b><small>Admin Dashboard</small></span></div>
+      <div><a class="btn ghost" href="/" target="_blank">View Store ↗</a><button class="btn" onclick="logout()">Logout</button></div>
+    </header>
+
+    <div class="admin-shell">
+      <aside class="admin-side">
+        <button class="side active" onclick="showTab('overview',this)">Overview</button>
+        <button class="side" onclick="showTab('products',this)">Products</button>
+        <button class="side" onclick="showTab('orders',this)">Orders</button>
+        <button class="side" onclick="showTab('website',this)">Website</button>
+      </aside>
+
+      <main class="admin-main">
+        <section id="overview" class="tab">
+          <div class="admin-heading"><div><span class="eyebrow">CONTROL CENTER</span><h1>Good evening, boss.</h1></div></div>
+          <div class="stats">
+            <div><span>Products</span><b id="statProducts">0</b></div>
+            <div><span>Total orders</span><b id="statOrders">0</b></div>
+            <div><span>Revenue</span><b id="statRevenue">₹0</b></div>
+            <div><span>New orders</span><b id="statNew">0</b></div>
+          </div>
+          <div class="admin-panel"><h3>Recent orders</h3><div id="recentOrders"></div></div>
+        </section>
+
+        <section id="products" class="tab hidden">
+          <div class="admin-heading"><div><span class="eyebrow">CATALOG</span><h1>Products</h1></div><button class="btn primary" onclick="newProduct()">+ Add product</button></div>
+          <div class="admin-panel"><div id="productsTable" class="table-wrap"></div></div>
+        </section>
+
+        <section id="orders" class="tab hidden">
+          <div class="admin-heading"><div><span class="eyebrow">SALES</span><h1>Orders</h1></div></div>
+          <div class="admin-panel"><div id="ordersTable" class="table-wrap"></div></div>
+        </section>
+
+        <section id="website" class="tab hidden">
+          <div class="admin-heading"><div><span class="eyebrow">CUSTOMIZE</span><h1>Website settings</h1></div></div>
+          <div class="admin-panel">
+            <form id="settingsForm" class="settings-grid">
+              <label>Brand name<input name="brand_name"></label>
+              <label>Phone<input name="phone"></label>
+              <label>Hero title<input name="hero_title"></label>
+              <label>Hero subtitle<input name="hero_subtitle"></label>
+              <label>Hero badge<input name="hero_badge"></label>
+              <label>Announcement<input name="announcement"></label>
+              <label>Accent color<input name="accent" type="color"></label>
+              <label class="check"><input name="dark_mode" type="checkbox"> Dark mode</label>
+              <button class="btn primary" type="submit">Save website changes</button>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <dialog id="productDialog">
+    <button class="dialog-close" onclick="productDialog.close()">×</button>
+    <span class="eyebrow">PRODUCT EDITOR</span>
+    <h2 id="productDialogTitle">Add product</h2>
+    <form id="productForm" class="settings-grid">
+      <input type="hidden" name="id">
+      <label>Name<input name="name" required></label>
+      <label>Category<input name="category" required></label>
+      <label>Price (₹)<input name="price" type="number" step="0.01" required></label>
+      <label>Old price (₹)<input name="old_price" type="number" step="0.01"></label>
+      <label>Badge<input name="badge" placeholder="BESTSELLER"></label>
+      <label>Stock<input name="stock" type="number"></label>
+      <label>Image URL<input name="image" placeholder="/uploads/file.webp or https://..."></label>
+      <label>Upload image<input id="imageFile" type="file" accept="image/*"></label>
+      <label class="wide">Description<textarea name="description" rows="5"></textarea></label>
+      <label class="check"><input name="featured" type="checkbox"> Featured product</label>
+      <div class="wide dialog-actions"><button class="btn" type="button" onclick="productDialog.close()">Cancel</button><button class="btn primary">Save product</button></div>
+    </form>
+  </dialog>
+
+  <script src="/admin.js"></script>
+</body>
+</html>
