@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitt Affair Nutrition</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="announcement" id="announcement"></div>
+  <header class="nav">
+    <a class="logo" href="/">
+      <span class="logo-mark">FA</span>
+      <span><b id="brandName">Fitt Affair</b><small>Nutrition</small></span>
+    </a>
+    <nav>
+      <a href="#shop">Shop</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="cart-btn" onclick="toggleCart()">Bag <span id="cartCount">0</span></button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow" id="heroBadge">TRAIN HARD • RECOVER SMART • REPEAT</div>
+        <h1 id="heroTitle">Build Strong.<br><em>Live Better.</em></h1>
+        <p id="heroSubtitle">Premium sports nutrition for your next level.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#shop">Shop Supplements <span>↗</span></a>
+          <a class="btn ghost" href="#why">Explore Fitt Affair</a>
+        </div>
+        <div class="trust-row">
+          <span>✓ Quality-first formulas</span>
+          <span>✓ COD available</span>
+          <span>✓ Fast dispatch</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="orb orb1"></div><div class="orb orb2"></div>
+        <div class="product-stage">
+          <div class="jar">
+            <div class="jar-lid"></div>
+            <div class="jar-body">
+              <div class="jar-brand">FA</div>
+              <div class="jar-name">WHEY<br><b>PRO</b></div>
+              <div class="jar-sub">PREMIUM PROTEIN</div>
+            </div>
+          </div>
+          <div class="floating-card"><b>25g</b><span>Protein / serving</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="shop">
+      <div class="section-head">
+        <div><span class="eyebrow">THE PERFORMANCE STACK</span><h2>Shop your essentials.</h2></div>
+        <div id="filters" class="filters"></div>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="why section" id="why">
+      <div class="why-intro">
+        <span class="eyebrow">WHY FITT AFFAIR</span>
+        <h2>Nutrition that fits<br><em>your ambition.</em></h2>
+        <p>Clean-looking, easy-to-shop sports nutrition built for people who take training seriously.</p>
+      </div>
+      <div class="benefits">
+        <article><span>01</span><h3>Performance</h3><p>Purpose-driven supplements for training, recovery and everyday fitness.</p></article>
+        <article><span>02</span><h3>Convenience</h3><p>Simple checkout, COD support and quick order processing.</p></article>
+        <article><span>03</span><h3>Consistency</h3><p>Make your daily nutrition routine easier to follow.</p></article>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div><span class="eyebrow">READY WHEN YOU ARE</span><h2>Make your next workout count.</h2></div>
+      <a class="btn primary" href="#shop">Build your stack ↗</a>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div><div class="logo"><span class="logo-mark">FA</span><span><b id="footerBrand">Fitt Affair Nutrition</b><small>Performance & wellness</small></span></div></div>
+    <div><b>Contact</b><a id="phoneLink" href="tel:+917302388557">+91 73023 88557</a><span>India</span></div>
+    <div><b>Quick</b><a href="#shop">Shop</a><a href="#why">Why Us</a></div>
+    <p class="copyright">© <span id="year"></span> Fitt Affair Nutrition. All rights reserved.</p>
+  </footer>
+
+  <aside class="cart" id="cart">
+    <div class="cart-head"><h3>Your Bag</h3><button onclick="toggleCart()">×</button></div>
+    <div id="cartItems"></div>
+    <div class="cart-total"><span>Total</span><strong id="cartTotal">₹0</strong></div>
+    <button class="btn primary full" onclick="openCheckout()">Checkout</button>
+  </aside>
+  <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+  <dialog id="checkoutDialog">
+    <button class="dialog-close" onclick="checkoutDialog.close()">×</button>
+    <span class="eyebrow">CHECKOUT</span>
+    <h2>Complete your order.</h2>
+    <form id="checkoutForm">
+      <input name="customer_name" placeholder="Full name" required>
+      <input name="phone" placeholder="Phone number" required>
+      <textarea name="address" placeholder="Full delivery address" required></textarea>
+      <button class="btn primary full">Place Order</button>
+      <small>You'll receive your order confirmation after submission.</small>
+    </form>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+</html>
